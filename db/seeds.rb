@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.destroy_all
+ActivityTimer.destroy_all
+
+user = User.create(name: "Sarah300", email: "test@test.com", password: "password")
+user.activity_timers.create(activity: "cleaning", work_time: "1:00", break_time: "0:20", sound: "ring")
