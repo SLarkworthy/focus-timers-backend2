@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "static#home"
+  namespace :api do
+    namespace :v1 do
+      resources :activity_timers
+      resources :users
+      post '/login' => "sessions#create"
+      get '/login' => "sessions#test"
+      get '/logged_in' => "sessions#logged_in"
+      delete '/logout' => "sessions#delete"
+    end
+  end
 end
