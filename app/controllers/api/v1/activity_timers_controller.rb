@@ -1,14 +1,17 @@
 class Api::V1::ActivityTimersController < ApplicationController
 
     def index
-        activity_timers = ActivityTimer.all
-        render json: activity_timers
+        if params[:user_id] && user = User.find_by(id: params[:user_id])
+            render json: ActivityTimerSerializer.new(user.activity_timers) 
+        else
+            render json: {error: "Not found"}, status: :unprocessable_entity
+        end
     end
 
     def create
-        activity_timer = ActivityTimer.new(activity_timer_params)
+        activity_timer = current_user.activity_timers.build(activity_timer_params)
         if activity_timer.save
-            render json: activity_timer
+            render json: ActivityTimerSerializer.new(activity_timer)
         else
             render json: {errors: activity_timer.errors.full_messages}, status: :unprocessable_entity
         end
@@ -16,10 +19,10 @@ class Api::V1::ActivityTimersController < ApplicationController
 
     def show
         activity_timer = ActivityTimer.find_by(id: params[:id])
-        render json: activity_timer
+        render json: ActivityTimerSerializer.new(activity_timer)
     end
 
-    def destory
+    def destroy
         activity_timer = ActivityTimer.find_by(id: params[:id])
         activity_timer.destroy
     end
