@@ -31,10 +31,9 @@ class Api::V1::SessionsController < ApplicationController
     end
 
     def delete
-        session.clear
+        session.delete(:user_id)
         render json: {
-            status: 200,
-            logged_out: true
+            status: 200
         }
     end
 
