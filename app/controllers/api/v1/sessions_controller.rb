@@ -10,7 +10,7 @@ class Api::V1::SessionsController < ApplicationController
             render json: {
                 status: :created,
                 logged_in: true,
-                user: user
+                user: UserSerializer.new(user)
             }
         else
             render json: {error: "Invalid login"}, status: :unauthorized
@@ -21,7 +21,7 @@ class Api::V1::SessionsController < ApplicationController
         if !!session[:user_id] && current_user
             render json: {
                 logged_in: true,
-                user: current_user
+                user: UserSerializer.new(current_user)
             }
         else
             render json: {

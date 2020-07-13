@@ -6,6 +6,8 @@
 
 -add alarm sounds
 
+-thunk!!!
+
 stretch goals
 1.randomized motivational quotes on homepage
 2.let users pick their alarm sounds

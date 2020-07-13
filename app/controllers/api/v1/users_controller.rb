@@ -11,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
             session[:user_id] = user.id
             render json: {
                 status: :created,
-                user: UserSerializer.new(users)
+                user: UserSerializer.new(user)
             }
         else
             render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: UserSerializer.new(users)
+        render json: UserSerializer.new(user)
     end
 
     private
