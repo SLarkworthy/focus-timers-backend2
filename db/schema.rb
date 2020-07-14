@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_191635) do
+ActiveRecord::Schema.define(version: 2020_07_14_194603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activity_timers", force: :cascade do |t|
     t.string "activity"
-    t.string "work_time"
-    t.string "break_time"
     t.string "sound"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "work_time_hours"
+    t.integer "work_time_minutes"
+    t.integer "break_time_hours"
+    t.integer "break_time_minutes"
   end
 
   create_table "users", force: :cascade do |t|

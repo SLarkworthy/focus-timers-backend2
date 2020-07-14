@@ -40,7 +40,7 @@ class Api::V1::ActivityTimersController < ApplicationController
     private
 
     def activity_timer_params
-        params.require(:activity_timer).permit(:activity, :work_time, :break_time, :sound, :user_id)
+        params.require(:activity_timer).permit(:activity, :work_time_hours, :work_time_minutes, break_time_hours, break_time_minutes, :sound, :user_id)
     end
 
 end
