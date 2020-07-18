@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :show] do
-        resources :activity_timers, only: [:index]
+        resources :activity_timers, only: [:index, :create, :update, :destroy]
       end
         resources :activity_timers, only: [:index, :create, :show, :update, :destroy]
       post '/login' => "sessions#create"
