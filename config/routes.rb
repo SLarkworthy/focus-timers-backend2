@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  root to: "static#home"
   namespace :api do
     namespace :v1 do
-      resources :users do
-        resources :activity_timers
+      resources :users, only: [:create, :show] do
+        resources :activity_timers, only: [:index]
       end
-        resources :activity_timers
+        resources :activity_timers, only: [:index, :create, :show, :update, :destroy]
       post '/login' => "sessions#create"
       get '/login' => "sessions#test"
       get '/logged_in' => "sessions#logged_in"
