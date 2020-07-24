@@ -35,7 +35,7 @@ class Api::V1::ActivityTimersController < ApplicationController
                 render json: {errors: activity_timer.errors.full_messages}, status: :unprocessable_entity
             end
         else
-            render json: {error: "Not authorized to edit"}, status: :unauthorized
+            render json: {errors: ["Not authorized to edit"]}, status: :unauthorized
         end
     end
 
@@ -44,7 +44,7 @@ class Api::V1::ActivityTimersController < ApplicationController
         if authorized_to_edit(activity_timer)
             activity_timer.destroy
         else
-            render json: {error: "Not authorized to edit"}, status: :unauthorized
+            render json: {errors: ["Not authorized to edit"]}, status: :unauthorized
         end
     end
 

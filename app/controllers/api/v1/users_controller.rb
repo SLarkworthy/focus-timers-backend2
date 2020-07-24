@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
         if user && current_user && user.id == current_user.id
             render json: UserSerializer.new(user)
         else
-            render json: {error: "Not authorized to view"}, status: :unauthorized
+            render json: {errors: ["Not authorized to view"]}, status: :unauthorized
         end
     end
 

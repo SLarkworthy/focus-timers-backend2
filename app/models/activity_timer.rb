@@ -11,12 +11,12 @@ class ActivityTimer < ApplicationRecord
 
     def work_time_cannot_be_zero
         if work_time_minutes === 0 && work_time_hours === 0
-            errors.add(:work_time_minutes, "work time cannot be 00:00")
+            errors.add(:work_time_minutes, "- Work time cannot be 00:00")
         end
     end
     def break_time_cannot_be_zero
         if break_time_minutes === 0 && break_time_hours === 0
-            errors.add(:break_time_minutes, "break time cannot be 00:00")
+            errors.add(:break_time_minutes, "- Break time cannot be 00:00")
         end
     end
  

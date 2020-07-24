@@ -10,7 +10,7 @@ class Api::V1::SessionsController < ApplicationController
                 user: UserSerializer.new(user)
             }
         else
-            render json: {error: "Invalid login"}, status: :unauthorized
+            render json: {errors: ["Invalid login"]}, status: :unauthorized
         end
     end
 
