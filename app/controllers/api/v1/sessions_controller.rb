@@ -7,6 +7,7 @@ class Api::V1::SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: {
                 logged_in: true,
+                session: session[:user_id],
                 user: UserSerializer.new(user)
             }
         else
