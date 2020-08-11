@@ -18,12 +18,12 @@ class Api::V1::SessionsController < ApplicationController
         if !!session[:user_id] && current_user
             render json: {
                 logged_in: true,
-                session: session[:user_id],
+                sessionnn: session[:user_id],
                 user: UserSerializer.new(current_user)
             }
         else
             render json: {
-                session: session[:user_id],
+                sessionnn: session[:user_id],
                 logged_in: false
             }
         end
